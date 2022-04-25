@@ -16,7 +16,7 @@ data class Todo(
 
     @NonNull
     @ColumnInfo(name="is_done")
-    var is_done:Int=0
+    var is_done:Int=0 //karena bakal masalah penulisan query nya
 
 ){
     @PrimaryKey(autoGenerate = true)
