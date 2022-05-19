@@ -16,7 +16,11 @@ data class Todo(
 
     @NonNull
     @ColumnInfo(name="is_done")
-    var is_done:Int=0 //karena bakal masalah penulisan query nya
+    var is_done:Int=0
+    //karena Room ini abstraksi dari SQLite dan SQLite tidak support tipe data boolean
+    // sehingga Room juga tidak support. Tetapi Room otomatis mengubah tipe data tersebut
+    // menjadi integer dan merepresentasikan TRUE= 1 dan FALSE= 0
+
 
 ){
     @PrimaryKey(autoGenerate = true)
