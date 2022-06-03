@@ -6,6 +6,12 @@
         <variable
             name="todo"
             type="dk.ubaya.todo.model.Todo" />
+        <variable
+            name="listener"
+            type="dk.ubaya.todo.view.TodoCheckedChangeListener" />
+        <variable
+            name="editlistener"
+            type="dk.ubaya.todo.view.TodoEditClickListener" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -21,6 +27,7 @@
             android:layout_marginEnd="24dp"
             android:layout_marginBottom="16dp"
             android:text="@{todo.title}"
+            android:onCheckedChanged="@{(cb,isChecked)->listener.onTodoCheckedChange(cb,isChecked,todo)}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -30,6 +37,8 @@
             android:id="@+id/imageEdit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:tag="@{todo.uuid}"
+            android:onClick="@{editlistener::onTodoEditClick}"
             android:layout_marginEnd="8dp"
             app:layout_constraintBottom_toBottomOf="@+id/checkTask"
             app:layout_constraintEnd_toEndOf="@+id/checkTask"
